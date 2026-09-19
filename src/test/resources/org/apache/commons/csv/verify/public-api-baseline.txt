@@ -1,0 +1,250 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+# Public API baseline of org.apache.commons.csv. Regenerate with:
+# mvn test -Dtest=PublicApiBaselineTest -Dapi.baseline.write=true
+class public final org.apache.commons.csv.CSVFormat implements java.io.Serializable
+class public final org.apache.commons.csv.CSVParser implements java.io.Closeable, java.lang.Iterable
+class public final org.apache.commons.csv.CSVPrinter implements java.io.Closeable, java.io.Flushable
+class public final org.apache.commons.csv.CSVRecord implements java.io.Serializable, java.lang.Iterable
+class public final org.apache.commons.csv.DuplicateHeaderMode extends java.lang.Enum
+class public final org.apache.commons.csv.QuoteMode extends java.lang.Enum
+class public org.apache.commons.csv.CSVException extends java.io.IOException
+class public static final org.apache.commons.csv.CSVFormat.Predefined extends java.lang.Enum
+class public static org.apache.commons.csv.CSVFormat.Builder implements java.util.function.Supplier
+class public static org.apache.commons.csv.CSVParser.Builder extends org.apache.commons.io.build.AbstractStreamBuilder
+constructor protected org.apache.commons.csv.CSVParser.Builder()
+constructor public org.apache.commons.csv.CSVParser(java.io.Reader, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+constructor public org.apache.commons.csv.CSVParser(java.io.Reader, org.apache.commons.csv.CSVFormat, long, long) throws java.io.IOException
+constructor public org.apache.commons.csv.CSVPrinter(java.lang.Appendable, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+constructor public transient org.apache.commons.csv.CSVException(java.lang.String, java.lang.Object[])
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.DEFAULT
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.EXCEL
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.INFORMIX_UNLOAD
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.INFORMIX_UNLOAD_CSV
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.MONGODB_CSV
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.MONGODB_TSV
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.MYSQL
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.ORACLE
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.POSTGRESQL_CSV
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.POSTGRESQL_TEXT
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.RFC4180
+field public static final org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.TDF
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.Default
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.Excel
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.InformixUnload
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.InformixUnloadCsv
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.MongoDBCsv
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.MongoDBTsv
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.MySQL
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.Oracle
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.PostgreSQLCsv
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.PostgreSQLText
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.RFC4180
+field public static final org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.TDF
+field public static final org.apache.commons.csv.DuplicateHeaderMode org.apache.commons.csv.DuplicateHeaderMode.ALLOW_ALL
+field public static final org.apache.commons.csv.DuplicateHeaderMode org.apache.commons.csv.DuplicateHeaderMode.ALLOW_EMPTY
+field public static final org.apache.commons.csv.DuplicateHeaderMode org.apache.commons.csv.DuplicateHeaderMode.DISALLOW
+field public static final org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.ALL
+field public static final org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.ALL_NON_NULL
+field public static final org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.MINIMAL
+field public static final org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.NONE
+field public static final org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.NON_NUMERIC
+method public boolean org.apache.commons.csv.CSVFormat.equals(java.lang.Object)
+method public boolean org.apache.commons.csv.CSVFormat.getAllowDuplicateHeaderNames()
+method public boolean org.apache.commons.csv.CSVFormat.getAllowMissingColumnNames()
+method public boolean org.apache.commons.csv.CSVFormat.getAutoFlush()
+method public boolean org.apache.commons.csv.CSVFormat.getIgnoreEmptyLines()
+method public boolean org.apache.commons.csv.CSVFormat.getIgnoreHeaderCase()
+method public boolean org.apache.commons.csv.CSVFormat.getIgnoreSurroundingSpaces()
+method public boolean org.apache.commons.csv.CSVFormat.getLenientEof()
+method public boolean org.apache.commons.csv.CSVFormat.getSkipHeaderRecord()
+method public boolean org.apache.commons.csv.CSVFormat.getTrailingData()
+method public boolean org.apache.commons.csv.CSVFormat.getTrailingDelimiter()
+method public boolean org.apache.commons.csv.CSVFormat.getTrim()
+method public boolean org.apache.commons.csv.CSVFormat.isCommentMarkerSet()
+method public boolean org.apache.commons.csv.CSVFormat.isEscapeCharacterSet()
+method public boolean org.apache.commons.csv.CSVFormat.isNullStringSet()
+method public boolean org.apache.commons.csv.CSVFormat.isQuoteCharacterSet()
+method public boolean org.apache.commons.csv.CSVParser.hasHeaderComment()
+method public boolean org.apache.commons.csv.CSVParser.hasTrailerComment()
+method public boolean org.apache.commons.csv.CSVParser.isClosed()
+method public boolean org.apache.commons.csv.CSVRecord.hasComment()
+method public boolean org.apache.commons.csv.CSVRecord.isConsistent()
+method public boolean org.apache.commons.csv.CSVRecord.isMapped(java.lang.String)
+method public boolean org.apache.commons.csv.CSVRecord.isSet(int)
+method public boolean org.apache.commons.csv.CSVRecord.isSet(java.lang.String)
+method public char org.apache.commons.csv.CSVFormat.getDelimiter()
+method public int org.apache.commons.csv.CSVFormat.hashCode()
+method public int org.apache.commons.csv.CSVRecord.size()
+method public java.lang.Appendable org.apache.commons.csv.CSVPrinter.getOut()
+method public java.lang.Character org.apache.commons.csv.CSVFormat.getCommentMarker()
+method public java.lang.Character org.apache.commons.csv.CSVFormat.getEscapeCharacter()
+method public java.lang.Character org.apache.commons.csv.CSVFormat.getQuoteCharacter()
+method public java.lang.String org.apache.commons.csv.CSVFormat.getDelimiterString()
+method public java.lang.String org.apache.commons.csv.CSVFormat.getNullString()
+method public java.lang.String org.apache.commons.csv.CSVFormat.getRecordSeparator()
+method public java.lang.String org.apache.commons.csv.CSVFormat.toString()
+method public java.lang.String org.apache.commons.csv.CSVParser.getFirstEndOfLine()
+method public java.lang.String org.apache.commons.csv.CSVParser.getHeaderComment()
+method public java.lang.String org.apache.commons.csv.CSVParser.getTrailerComment()
+method public java.lang.String org.apache.commons.csv.CSVRecord.get(int)
+method public java.lang.String org.apache.commons.csv.CSVRecord.get(java.lang.Enum)
+method public java.lang.String org.apache.commons.csv.CSVRecord.get(java.lang.String)
+method public java.lang.String org.apache.commons.csv.CSVRecord.getComment()
+method public java.lang.String org.apache.commons.csv.CSVRecord.toString()
+method public java.lang.String[] org.apache.commons.csv.CSVFormat.getHeader()
+method public java.lang.String[] org.apache.commons.csv.CSVFormat.getHeaderComments()
+method public java.lang.String[] org.apache.commons.csv.CSVRecord.values()
+method public java.util.Iterator org.apache.commons.csv.CSVParser.iterator()
+method public java.util.Iterator org.apache.commons.csv.CSVRecord.iterator()
+method public java.util.List org.apache.commons.csv.CSVParser.getHeaderNames()
+method public java.util.List org.apache.commons.csv.CSVParser.getRecords()
+method public java.util.List org.apache.commons.csv.CSVRecord.toList()
+method public java.util.Map org.apache.commons.csv.CSVParser.getHeaderMap()
+method public java.util.Map org.apache.commons.csv.CSVRecord.putIn(java.util.Map)
+method public java.util.Map org.apache.commons.csv.CSVRecord.toMap()
+method public java.util.stream.Stream org.apache.commons.csv.CSVParser.stream()
+method public java.util.stream.Stream org.apache.commons.csv.CSVRecord.stream()
+method public long org.apache.commons.csv.CSVFormat.getMaxRows()
+method public long org.apache.commons.csv.CSVParser.getCurrentLineNumber()
+method public long org.apache.commons.csv.CSVParser.getRecordNumber()
+method public long org.apache.commons.csv.CSVPrinter.getRecordCount()
+method public long org.apache.commons.csv.CSVRecord.getBytePosition()
+method public long org.apache.commons.csv.CSVRecord.getCharacterPosition()
+method public long org.apache.commons.csv.CSVRecord.getRecordNumber()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.Builder.build()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.Builder.get()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.Predefined.getFormat()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withAllowDuplicateHeaderNames()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withAllowDuplicateHeaderNames(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withAllowMissingColumnNames()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withAllowMissingColumnNames(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withAutoFlush(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withCommentMarker(char)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withCommentMarker(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withDelimiter(char)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withEscape(char)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withEscape(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withFirstRecordAsHeader()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withHeader(java.lang.Class)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withHeader(java.sql.ResultSet) throws java.sql.SQLException
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withHeader(java.sql.ResultSetMetaData) throws java.sql.SQLException
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreEmptyLines()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreEmptyLines(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreHeaderCase()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreHeaderCase(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreSurroundingSpaces()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withIgnoreSurroundingSpaces(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withNullString(java.lang.String)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withQuote(char)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withQuote(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withQuoteMode(org.apache.commons.csv.QuoteMode)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withRecordSeparator(char)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withRecordSeparator(java.lang.String)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withSkipHeaderRecord()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withSkipHeaderRecord(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withSystemRecordSeparator()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withTrailingDelimiter()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withTrailingDelimiter(boolean)
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withTrim()
+method public org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withTrim(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setAllowDuplicateHeaderNames(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setAllowMissingColumnNames(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setAutoFlush(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setCommentMarker(char)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setCommentMarker(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setDelimiter(char)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setDelimiter(java.lang.String)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setDuplicateHeaderMode(org.apache.commons.csv.DuplicateHeaderMode)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setEscape(char)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setEscape(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeader(java.lang.Class)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeader(java.sql.ResultSet) throws java.sql.SQLException
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeader(java.sql.ResultSetMetaData) throws java.sql.SQLException
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setIgnoreEmptyLines(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setIgnoreHeaderCase(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setIgnoreSurroundingSpaces(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setLenientEof(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setMaxRows(long)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setNullString(java.lang.String)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setQuote(char)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setQuote(java.lang.Character)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setQuoteMode(org.apache.commons.csv.QuoteMode)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setRecordSeparator(char)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setRecordSeparator(java.lang.String)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setSkipHeaderRecord(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setTrailingData(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setTrailingDelimiter(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setTrim(boolean)
+method public org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.builder()
+method public org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVFormat.parse(java.io.Reader) throws java.io.IOException
+method public org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.Builder.get() throws java.io.IOException
+method public org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVRecord.getParser()
+method public org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.Builder.setByteOffset(long)
+method public org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.Builder.setCharacterOffset(long)
+method public org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.Builder.setFormat(org.apache.commons.csv.CSVFormat)
+method public org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.Builder.setRecordNumber(long)
+method public org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.Builder.setTrackBytes(boolean)
+method public org.apache.commons.csv.CSVPrinter org.apache.commons.csv.CSVFormat.print(java.io.File, java.nio.charset.Charset) throws java.io.IOException
+method public org.apache.commons.csv.CSVPrinter org.apache.commons.csv.CSVFormat.print(java.lang.Appendable) throws java.io.IOException
+method public org.apache.commons.csv.CSVPrinter org.apache.commons.csv.CSVFormat.print(java.nio.file.Path, java.nio.charset.Charset) throws java.io.IOException
+method public org.apache.commons.csv.CSVPrinter org.apache.commons.csv.CSVFormat.printer() throws java.io.IOException
+method public org.apache.commons.csv.DuplicateHeaderMode org.apache.commons.csv.CSVFormat.getDuplicateHeaderMode()
+method public org.apache.commons.csv.QuoteMode org.apache.commons.csv.CSVFormat.getQuoteMode()
+method public static org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.newFormat(char)
+method public static org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.valueOf(java.lang.String)
+method public static org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.create()
+method public static org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.create(org.apache.commons.csv.CSVFormat)
+method public static org.apache.commons.csv.CSVFormat.Predefined org.apache.commons.csv.CSVFormat.Predefined.valueOf(java.lang.String)
+method public static org.apache.commons.csv.CSVFormat.Predefined[] org.apache.commons.csv.CSVFormat.Predefined.values()
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.io.File, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.io.InputStream, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.io.Reader, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.lang.String, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.net.URL, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser org.apache.commons.csv.CSVParser.parse(java.nio.file.Path, java.nio.charset.Charset, org.apache.commons.csv.CSVFormat) throws java.io.IOException
+method public static org.apache.commons.csv.CSVParser.Builder org.apache.commons.csv.CSVParser.builder()
+method public static org.apache.commons.csv.DuplicateHeaderMode org.apache.commons.csv.DuplicateHeaderMode.valueOf(java.lang.String)
+method public static org.apache.commons.csv.DuplicateHeaderMode[] org.apache.commons.csv.DuplicateHeaderMode.values()
+method public static org.apache.commons.csv.QuoteMode org.apache.commons.csv.QuoteMode.valueOf(java.lang.String)
+method public static org.apache.commons.csv.QuoteMode[] org.apache.commons.csv.QuoteMode.values()
+method public transient java.lang.String org.apache.commons.csv.CSVFormat.format(java.lang.Object[])
+method public transient org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withHeader(java.lang.String[])
+method public transient org.apache.commons.csv.CSVFormat org.apache.commons.csv.CSVFormat.withHeaderComments(java.lang.Object[])
+method public transient org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeader(java.lang.String[])
+method public transient org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeaderComments(java.lang.Object[])
+method public transient org.apache.commons.csv.CSVFormat.Builder org.apache.commons.csv.CSVFormat.Builder.setHeaderComments(java.lang.String[])
+method public transient void org.apache.commons.csv.CSVFormat.printRecord(java.lang.Appendable, java.lang.Object[]) throws java.io.IOException
+method public transient void org.apache.commons.csv.CSVPrinter.printRecord(java.lang.Object[]) throws java.io.IOException
+method public transient void org.apache.commons.csv.CSVPrinter.printRecords(java.lang.Object[]) throws java.io.IOException
+method public void org.apache.commons.csv.CSVFormat.print(java.lang.Object, java.lang.Appendable, boolean) throws java.io.IOException
+method public void org.apache.commons.csv.CSVFormat.println(java.lang.Appendable) throws java.io.IOException
+method public void org.apache.commons.csv.CSVParser.close() throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.close() throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.close(boolean) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.flush() throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.print(java.lang.Object) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.printComment(java.lang.String) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.printHeaders(java.sql.ResultSet) throws java.io.IOException, java.sql.SQLException
+method public void org.apache.commons.csv.CSVPrinter.printRecord(java.lang.Iterable) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.printRecord(java.util.stream.Stream) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.printRecords(java.lang.Iterable) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.printRecords(java.sql.ResultSet) throws java.io.IOException, java.sql.SQLException
+method public void org.apache.commons.csv.CSVPrinter.printRecords(java.sql.ResultSet, boolean) throws java.io.IOException, java.sql.SQLException
+method public void org.apache.commons.csv.CSVPrinter.printRecords(java.util.stream.Stream) throws java.io.IOException
+method public void org.apache.commons.csv.CSVPrinter.println() throws java.io.IOException

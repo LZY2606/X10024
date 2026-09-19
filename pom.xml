@@ -168,6 +168,8 @@
           <!-- Should agree with config in reporting section -->
           <configuration>
             <inputExcludes>
+              <!-- Local environment marker, not part of the release. -->
+              <inputExclude>.pwgsb-origin</inputExclude>
               <!-- These files are used as test data and test result specifications. -->
               <inputExclude>src/test/resources/org/apache/commons/csv/empty.txt</inputExclude>
               <inputExclude>src/test/resources/org/apache/commons/csv/CSV-141/csv-141.csv</inputExclude>

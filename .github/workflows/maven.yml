@@ -57,5 +57,6 @@ jobs:
       with:
         distribution: ${{ runner.os == 'macOS' && matrix.java == '8' && 'zulu' || 'temurin' }}
         java-version: ${{ matrix.java }}
-    - name: Build with Maven
-      run: mvn -Ddoclint=all --show-version --batch-mode --no-transfer-progress
+    # Local development and CI share the same verification entry point.
+    - name: Build and verify
+      run: ./verify.sh --jdk ${{ matrix.java }}
