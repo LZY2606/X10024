@@ -38,7 +38,8 @@ Licensed to the Apache Software Foundation (ASF) under one or more
             </includes>
         </fileSet>
         <fileSet>
-            <directory>target/site/apidocs</directory>
+            <!-- maven-javadoc-plugin 3.11+ emits into target/reports/apidocs -->
+            <directory>target/reports/apidocs</directory>
             <outputDirectory>apidocs</outputDirectory>
             <includes>
                 <include>**/*</include>

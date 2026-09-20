@@ -25,8 +25,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  # Compile and test on every JDK in the matrix through the same entry
+  # point developers use (verify.sh); never invoke Maven directly here.
+  matrix:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     strategy:
@@ -34,19 +35,19 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-        java: [ 8, 11, 17, 21, 25, 26 ]
+        java: [8, 11, 17, 21, 25, 26]
         experimental: [false]
         # Keep the same parameter order as the matrix above
         include:
           - os: ubuntu-latest
             java: 27-ea
             experimental: true
-      
+
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         persist-credentials: false
-    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 #v6.1.0
+    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -57,5 +58,41 @@ jobs:
       with:
         distribution: ${{ runner.os == 'macOS' && matrix.java == '8' && 'zulu' || 'temurin' }}
         java-version: ${{ matrix.java }}
-    - name: Build with Maven
-      run: mvn -Ddoclint=all --show-version --batch-mode --no-transfer-progress
+    - name: Build and test via verify.sh
+      shell: bash
+      run: |
+        version="${JAVA_VERSION%-ea}"
+        ./verify.sh matrix "$version"
+      env:
+        JAVA_VERSION: ${{ matrix.java }}
+
+  # JPMS metadata, japicmp API baseline and jar/assembly content checks run
+  # once on the primary JDK. This is the exact 'packages' step a release
+  # manager runs locally, so a green job means a releasable workspace.
+  release-verify:
+    runs-on: ubuntu-latest
+    needs: matrix
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Set up JDK 21
+      uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # 6.0.0
+      with:
+        distribution: temurin
+        java-version: 21
+    - name: JPMS self-check
+      shell: bash
+      run: ./verify.sh build 21 && ./verify.sh jpms 21
+    - name: Public API baseline (japicmp)
+      shell: bash
+      run: ./verify.sh japicmp 21
+    - name: Published artifacts content
+      shell: bash
+      run: ./verify.sh packages 21

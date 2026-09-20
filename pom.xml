@@ -168,6 +168,8 @@
           <!-- Should agree with config in reporting section -->
           <configuration>
             <inputExcludes>
+              <!-- Local harness metadata, not part of the source distribution -->
+              <inputExclude>.pwgsb-origin</inputExclude>
               <!-- These files are used as test data and test result specifications. -->
               <inputExclude>src/test/resources/org/apache/commons/csv/empty.txt</inputExclude>
               <inputExclude>src/test/resources/org/apache/commons/csv/CSV-141/csv-141.csv</inputExclude>
@@ -455,6 +457,97 @@
                     <argument>target/jmh-result.json</argument>
                     <argument>${benchmark}</argument>
                   </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <!--
+      Self-contained verification of everything that is published:
+      javadoc, binary and source assemblies, JPMS metadata and the
+      japicmp API baseline, plus the ReleaseArtifactsIT content checks.
+      Unlike the 'release' profile it requires neither GPG keys nor the
+      release-infrastructure plugins, so it runs offline and in CI.
+      Activated by the verify.sh 'packages' step; never active by default.
+    -->
+    <profile>
+      <id>release-verify</id>
+      <build>
+        <plugins>
+          <!-- Build the Javadoc that the bin assembly embeds -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>release-verify-javadoc</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>javadoc</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Assemble the -bin and -src distributions without signing/staging -->
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <descriptors>
+                <descriptor>src/assembly/bin.xml</descriptor>
+                <descriptor>src/assembly/src.xml</descriptor>
+              </descriptors>
+              <tarLongFileMode>gnu</tarLongFileMode>
+            </configuration>
+            <executions>
+              <execution>
+                <id>release-verify-assemblies</id>
+                <phase>integration-test</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <descriptors>
+                    <descriptor>src/assembly/bin.xml</descriptor>
+                    <descriptor>src/assembly/src.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Fail on binary-incompatible changes against the released baseline -->
+          <plugin>
+            <groupId>com.github.siom79.japicmp</groupId>
+            <artifactId>japicmp-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>release-verify-japicmp</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>cmp</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Content checks for jars and distribution assemblies -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>release-verify-integration-tests</id>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+                <configuration>
+                  <includes>
+                    <include>**/ReleaseArtifactsIT.java</include>
+                  </includes>
+                  <systemPropertyVariables>
+                    <csv.release.verify>true</csv.release.verify>
+                  </systemPropertyVariables>
                 </configuration>
               </execution>
             </executions>
